@@ -241,7 +241,7 @@ config_shadowsocks(){
     "server_port":${shadowsocksport},
     "local_port":1080,
     "password":"${shadowsockspwd}",
-    "method":"aes-256-cfb",
+    "method":"chacha20",
     "timeout":600
 }
 EOF
