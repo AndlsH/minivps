@@ -320,7 +320,7 @@ install(){
     echo -e "Your Server Port: \033[41;37m ${shadowsocksport} \033[0m"
     echo -e "Your Password: \033[41;37m ${shadowsockspwd} \033[0m"
     echo -e "Your Local Port: \033[41;37m 1080 \033[0m"
-    echo -e "Your Encryption Method: \033[41;37m aes-256-cfb \033[0m"
+    echo -e "Your Encryption Method: \033[41;37m chacha20 \033[0m"
     echo
     echo "Welcome to visit:https://teddysun.com/392.html"
     echo "Enjoy it!"
