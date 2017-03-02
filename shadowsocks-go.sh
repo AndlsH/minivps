@@ -202,7 +202,7 @@ download_files(){
             echo "Decompress shadowsocks-server.tar.gz failed"
             exit 1
         fi
-        mv -f shadowsocks-server-linux64-1.2.1 /usr/bin/shadowsocks-server
+        mv -f shadowsocks-server /usr/bin/shadowsocks-server
     else
         if ! wget -c http://dl.teddysun.com/shadowsocks/shadowsocks-server-linux32-1.2.1.gz; then
             echo "Failed to download shadowsocks-server-linux32-1.2.1.gz"
