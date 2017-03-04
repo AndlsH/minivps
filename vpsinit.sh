@@ -3,6 +3,16 @@
 Welcome()
 {
     clear
+C9sdk()
+{
+    yum install nodejs npm --enablerepo=epel
+    git clone git://github.com/c9/core.git --depth=1 /opt/c9sdk
+    bash /opt/c9sdk/scripts/install-sdk.sh
+    npm install pm2 -g
+    pm2 start /opt/c9sdk/server.js -n c9sdk -x -- -w ~ -p 8080 -l 0.0.0.0 -a admin:qweasd
+    pm2 startup
+}
+
 }
 }
 SetSshPort()
