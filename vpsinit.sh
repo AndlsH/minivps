@@ -42,6 +42,14 @@ SetSshPort()
     sed -i "/Port 22/aPort ${sshPort}" /etc/ssh/sshd_config
     systemctl restart sshd
 }
+# Disable selinux
+DisableSelinux(){
+    if [ -s /etc/selinux/config ] && grep 'SELINUX=enforcing' /etc/selinux/config; then
+        sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+        setenforce 0
+    fi
+}
+
 action=$1
 [ -z $1 ] && action=Welcome
 ${action}
