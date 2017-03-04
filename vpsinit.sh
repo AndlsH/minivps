@@ -14,7 +14,21 @@ C9sdk()
 }
 
 }
+# Set root password
+SetRootPwd()
+{
+    echo "Please input password for root:"
+    read -p "(Default password: qwer1234):" rootPwd
+    [ -z "${rootPwd}" ] && rootPwd="qwer1234"
+    echo
+    echo "---------------------------"
+    echo "  root password = ${rootPwd}"
+    echo "---------------------------"
+    echo
+    # set
+    echo ${rootPwd} | passwd --stdin root
 }
+
 SetSshPort()
 {
     echo "Please input SSH port:"
