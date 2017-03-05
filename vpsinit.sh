@@ -42,8 +42,6 @@ ChangeKernel()
     cat >> /etc/yum.conf <<- EOF
 exclude=kernel-2* kernel-3* kernel-4*
 EOF
-    wget http://vault.centos.org/7.1.1503/updates/x86_64/Packages/kernel-3.10.0-229.1.2.el7.x86_64.rpm
-    rpm -ivh kernel-3.10.0-229.1.2.el7.x86_64.rpm --force
     ChkSys
     case "${osId}${osVer}" in
         centos7)
@@ -58,6 +56,18 @@ EOF
             ;;
     esac
 
+    echo "Please choose kernel version: "
+    echo "1) ${selectKernelVer} [Default]"
+    echo "2) Choose another version"
+    read -p "Please enter your choise: " selectKernel
+    [[ -z selectKernel ]] && selectKernel=1
+    [[ 2 == ${selectKernel} ]] && SelectKernel
+
+    kernelFile="kernel-${selectKernelVer}.${osMach}.rpm"
+    getKernel="http://vault.centos.org/${selectKernelOs}/updates/${osArch}/Packages/${kernelFile}"
+    wget ${getKernel} || { getKernel="http://vault.centos.org/${selectKernelOs}/os/${osArch}/Packages/${kernelFile}" ; wget ${getKernel}; }
+    rpm -ivh ${kernelFile} --force
+}
 
 }
 
