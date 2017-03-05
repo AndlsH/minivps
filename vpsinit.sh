@@ -23,6 +23,11 @@ Welcome()
     echo "#       https://www.andls.com/      #"
     echo "#####################################"
     echo
+ChkSys()
+{
+    osMachine=`uname -m`
+}
+
 # TODO
 # kernel selector
 # appen exclutions
