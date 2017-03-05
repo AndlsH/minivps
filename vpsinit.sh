@@ -71,4 +71,14 @@ DisableSelinux(){
 
 action=$1
 [ -z $1 ] && action=Welcome
-${action}
+case "${action}" in
+    Welcome)
+        ${action}
+        ;;
+    *)
+        echo "I cannot understand ${action}!"
+        echo "Please double check your input!"
+        echo "Use `usage` argument to see help!"
+        ;;
+esac
+
