@@ -23,6 +23,20 @@ Welcome()
     echo "#       https://www.andls.com/      #"
     echo "#####################################"
     echo
+# TODO
+# kernel selector
+# appen exclutions
+ChangeKernel()
+{
+    cp /etc/yum.conf /etc/yum.conf.bak
+    cat >> /etc/yum.conf <<- EOF
+exclude=kernel-2* kernel-3* kernel-4*
+EOF
+    wget http://vault.centos.org/7.1.1503/updates/x86_64/Packages/kernel-3.10.0-229.1.2.el7.x86_64.rpm
+    rpm -ivh kernel-3.10.0-229.1.2.el7.x86_64.rpm --force
+
+}
+
 {
     yum install nodejs npm --enablerepo=epel
     git clone git://github.com/c9/core.git --depth=1 /opt/c9sdk
