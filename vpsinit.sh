@@ -59,7 +59,7 @@ EOF
     echo "Please choose kernel version: "
     echo "1) ${selectKernelVer} [Default]"
     echo "2) Choose another version"
-    read -p "Please enter your choise: " selectKernel
+    read -p "Please enter your choice: " selectKernel
     [[ -z selectKernel ]] && selectKernel=1
     [[ 2 == ${selectKernel} ]] && SelectKernel
 
