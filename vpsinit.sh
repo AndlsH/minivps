@@ -44,6 +44,20 @@ exclude=kernel-2* kernel-3* kernel-4*
 EOF
     wget http://vault.centos.org/7.1.1503/updates/x86_64/Packages/kernel-3.10.0-229.1.2.el7.x86_64.rpm
     rpm -ivh kernel-3.10.0-229.1.2.el7.x86_64.rpm --force
+    ChkSys
+    case "${osId}${osVer}" in
+        centos7)
+            echo "centos7 detected!"
+            selectKernelOs="7.1.1503"; selectKernelVer="3.10.0-229.1.2.el7"
+            ;;
+        centos6)
+            selectKernelOs="6.6"; selectKernelVer="2.6.32-504.3.3.el6"
+            ;;
+        *)
+            #SelectKernel
+            ;;
+    esac
+
 
 }
 
