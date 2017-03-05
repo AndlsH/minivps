@@ -69,6 +69,25 @@ EOF
     rpm -ivh ${kernelFile} --force
 }
 
+# TODO
+# Add/Delete port
+
+SetFirewall()
+{
+    ChkSys
+    [[ -z ${firewallPort} ]] && read -p "Please enter port number you want to add: " firewallPort
+    case "${osId}${osVer}" in
+        centos7)
+            sysFirewall="firewalld"
+            ;;
+        centos6)
+            sysFirewall="iptables"
+            ;;
+        *)
+            ;;
+    esac
+    #[[ firewalld == ${sysFirewall} ]] && SetFirewalld
+    #[[ iptables  == ${sysFirewall} ]] && SetIptables
 }
 
 SetFirewalld()
