@@ -42,6 +42,26 @@ EOF
 
 }
 
+SetFirewalld()
+{
+    [[ -z ${port} ]] && systemctl status firewalld > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        firewall-cmd --permanent --zone=public --add-port=${port}/tcp
+        firewall-cmd --permanent --zone=public --add-port=${port}/udp
+        firewall-cmd --reload
+    else
+        echo "Firewalld is not running, trying to start..."
+        systemctl start firewalld
+        if [ $? -eq 0 ]; then
+            firewall-cmd --permanent --zone=public --add-port=${port}/tcp
+            firewall-cmd --permanent --zone=public --add-port=${port}/udp
+            firewall-cmd --reload
+        else
+            echo "WARNING: Try to start firewalld failed. Please configure port ${port} manually."
+        fi
+    fi
+}
+
 {
     yum install nodejs npm --enablerepo=epel
     git clone git://github.com/c9/core.git --depth=1 /opt/c9sdk
