@@ -1,9 +1,28 @@
 #!/usr/bin/bash
 
+#############################################################
+#
+#               One Click VPS initializer
+#
+#       Author:   Andls
+#       Version:  0.0.1
+#       Date:     2017.03.04
+#       Homepage: https://www.andls.com/
+#       GitHub:   https://github.com/AndlsH/vpsinit
+#
+#############################################################
+
 Welcome()
 {
     clear
-C9sdk()
+    echo
+    echo "#####################################"
+    echo "#     One Click VPS initializer     #"
+    echo "#                                   #"
+    echo "#             By Andls              #"
+    echo "#       https://www.andls.com/      #"
+    echo "#####################################"
+    echo
 {
     yum install nodejs npm --enablerepo=epel
     git clone git://github.com/c9/core.git --depth=1 /opt/c9sdk
