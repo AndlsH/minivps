@@ -25,7 +25,12 @@ Welcome()
     echo
 ChkSys()
 {
-    osMachine=`uname -m`
+    # Machine: x86_64, i686; Arch: x86_64, i386 ?
+    osMach=`uname -m`; osArch=`arch`
+    osId=`cat /etc/*-release | grep "^ID="`; osId=${osId##*=}; osId=${osId#\"}; osId=${osId%\"}
+    osVer=`cat /etc/*-release | grep "^VERSION_ID="`; osVer=${osVer##*=}; osVer=${osVer#\"}; osVer=${osVer%\"}
+}
+
 }
 
 # TODO
