@@ -44,7 +44,7 @@ EOF
 
 SetFirewalld()
 {
-    [[ -z ${port} ]] && systemctl status firewalld > /dev/null 2>&1
+    [[ ! -z ${port} ]] && systemctl status firewalld > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         firewall-cmd --permanent --zone=public --add-port=${port}/tcp
         firewall-cmd --permanent --zone=public --add-port=${port}/udp
